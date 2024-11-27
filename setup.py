@@ -18,8 +18,8 @@ extras_require = {
     ],
     # https://github.com/SeldonIO/alibi-detect/issues/375 and 387
     "tensorflow": [
-        "tensorflow_probability>=0.8.0, <0.24.0",
-        "tensorflow>=2.2.0, !=2.6.0, !=2.6.1, <2.16.0",  # https://github.com/SeldonIO/alibi-detect/issues/375 and 387
+        "tensorflow_probability>=0.8.0, <0.26.0",
+        "tensorflow>=2.2.0, !=2.6.0, !=2.6.1, <2.19.0",  # https://github.com/SeldonIO/alibi-detect/issues/375 and 387
     ],
     "keops": [
         "pykeops>=2.0.0, <2.3.0",
@@ -27,8 +27,8 @@ extras_require = {
     ],
     "all": [
         "prophet>=1.1.0, <2.0.0",
-        "tensorflow_probability>=0.8.0, <0.24.0",
-        "tensorflow>=2.2.0, !=2.6.0, !=2.6.1, <2.16.0",  # https://github.com/SeldonIO/alibi-detect/issues/375 and 387
+        "tensorflow_probability>=0.8.0, <0.26.0",
+        "tensorflow>=2.2.0, !=2.6.0, !=2.6.1, <2.19.0",  # https://github.com/SeldonIO/alibi-detect/issues/375 and 387
         "pykeops>=2.0.0, <2.3.0",
         "torch>=1.7.0, <3.0.0"
     ],
