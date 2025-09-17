@@ -14,7 +14,7 @@ extras_require = {
         "prophet>=1.1.0, <2.0.0",
     ],
     "torch": [
-        "torch>=1.7.0, <3.0.0"
+        "torch>=1.7.0, <2.6.0"
     ],
     "tensorflow": [
         "tensorflow_probability>=0.8.0, <0.26.0",
@@ -23,7 +23,7 @@ extras_require = {
     ],
     "keops": [
         "pykeops>=2.0.0, <2.3.0",
-        "torch>=1.7.0, <3.0.0"
+        "torch>=1.7.0, <2.6.0"
     ],
     "all": [
         "prophet>=1.1.0, <2.0.0",
@@ -31,7 +31,7 @@ extras_require = {
         "tensorflow>=2.16.0, <2.19.0",
         "tf-keras>=2.16.0, <2.19.0",
         "pykeops>=2.0.0, <2.3.0",
-        "torch>=1.7.0, <3.0.0"
+        "torch>=1.7.0, <2.6.0"
     ],
 }
 
@@ -58,8 +58,8 @@ setup(
         "opencv-python>=3.2.0, <5.0.0",
         "scipy>=1.5.0, <2.0.0",
         "scikit-image>=0.24, <0.26.0",
-        "scikit-learn>=0.20.2, <2.0.0",
-        "transformers>=4.0.0, <5.0.0",
+        "scikit-learn>=0.20.2, <1.6.0",
+        "transformers>=4.0.0, <4.52.0",
         "dill>=0.3.0, <0.4.0",
         "tqdm>=4.28.1, <5.0.0",
         "requests>=2.21.0, <3.0.0",
