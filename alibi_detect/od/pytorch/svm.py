@@ -5,6 +5,7 @@ import numpy as np
 import torch
 from sklearn.linear_model import SGDOneClassSVM
 from sklearn.utils.extmath import safe_sparse_dot
+from sklearn.utils.validation import validate_data
 from tqdm import tqdm
 from typing_extensions import Self
 
@@ -195,7 +196,7 @@ class SgdSVMTorch(SVMTorch):
         self.check_fitted()
         x_nys = self.nystroem.transform(x).cpu().numpy()
         coef_ = self.svm.coef_ / (self.svm.coef_ ** 2).sum()
-        x_nys = self.svm._validate_data(x_nys, accept_sparse="csr", reset=False)
+        x_nys = validate_data(self.svm, x_nys, accept_sparse="csr", reset=False)
         result = safe_sparse_dot(x_nys, coef_.T, dense_output=True).ravel()
         return - self._to_backend_dtype(result)
 
