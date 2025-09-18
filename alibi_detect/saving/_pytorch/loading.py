@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Callable, Optional, Union, Type
 
 import dill
+import numpy
 import torch
 import torch.nn as nn
 
@@ -12,6 +13,7 @@ from alibi_detect.cd.pytorch import UAE, HiddenOutput
 from alibi_detect.cd.pytorch.preprocess import _Encoder
 from alibi_detect.models.pytorch import TransformerEmbedding
 from alibi_detect.utils.pytorch.kernels import DeepKernel
+from alibi_detect.utils.pytorch.misc import safe_globals
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +37,8 @@ def load_model(filepath: Union[str, os.PathLike],
     Loaded model.
     """
     filepath = Path(filepath).joinpath('model.pt')
-    model = torch.load(filepath, pickle_module=dill)
+    with safe_globals():
+        model = torch.load(filepath, pickle_module=dill)
     # Optionally extract hidden layer
     if isinstance(layer, int):
         model = HiddenOutput(model, layer=layer)

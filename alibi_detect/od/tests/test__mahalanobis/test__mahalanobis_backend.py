@@ -64,7 +64,7 @@ def test_mahalanobis_torch_backend_ts(tmp_path):
     assert torch.all(pred_1 == pred_2)
 
     mahalanobis_torch.save(tmp_path / 'mahalanobis_torch.pt')
-    mahalanobis_torch = torch.load(tmp_path / 'mahalanobis_torch.pt')
+    mahalanobis_torch = torch.load(tmp_path / 'mahalanobis_torch.pt', weights_only=False)
     pred_2 = mahalanobis_torch(x)
     assert torch.all(pred_1 == pred_2)
 

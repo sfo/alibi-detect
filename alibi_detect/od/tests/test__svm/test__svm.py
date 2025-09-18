@@ -205,7 +205,7 @@ def test_svm_torchscript(tmp_path):
     assert torch.all(y == torch.tensor([False, True]))
 
     ts_svm.save(tmp_path / 'svm.pt')
-    ts_svm = torch.load(tmp_path / 'svm.pt')
+    ts_svm = torch.load(tmp_path / 'svm.pt', weights_only=False)
     y = ts_svm(x)
     assert torch.all(y == torch.tensor([False, True]))
 

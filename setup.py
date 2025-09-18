@@ -14,7 +14,7 @@ extras_require = {
         "prophet>=1.1.0, <2.0.0",
     ],
     "torch": [
-        "torch>=1.7.0, <2.6.0"
+        "torch>=1.7.0, <3.0.0"
     ],
     "tensorflow": [
         "tensorflow_probability>=0.8.0, <0.26.0",
@@ -23,7 +23,7 @@ extras_require = {
     ],
     "keops": [
         "pykeops>=2.0.0, <2.3.0",
-        "torch>=1.7.0, <2.6.0"
+        "torch>=1.7.0, <3.0.0"
     ],
     "all": [
         "prophet>=1.1.0, <2.0.0",
@@ -31,7 +31,7 @@ extras_require = {
         "tensorflow>=2.16.0, <2.20.0",
         "tf-keras>=2.16.0, <2.20.0",
         "pykeops>=2.0.0, <2.3.0",
-        "torch>=1.7.0, <2.6.0"
+        "torch>=1.7.0, <3.0.0"
     ],
 }
 

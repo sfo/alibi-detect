@@ -56,7 +56,7 @@ def test_gmm_torch_backend_ts(tmp_path):
     assert torch.all(pred_1 == pred_2)
 
     gmm_torch.save(tmp_path / 'gmm_torch.pt')
-    gmm_torch = torch.load(tmp_path / 'gmm_torch.pt')
+    gmm_torch = torch.load(tmp_path / 'gmm_torch.pt', weights_only=False)
     pred_2 = gmm_torch(x)
     assert torch.all(pred_1 == pred_2)
 

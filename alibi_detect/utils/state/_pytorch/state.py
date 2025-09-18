@@ -2,7 +2,10 @@
 Submodule to handle saving and loading of detector state dictionaries when the dictionaries contain `torch.Tensor`'s.
 """
 from pathlib import Path
+import numpy
 import torch
+
+from alibi_detect.utils.pytorch.misc import safe_globals
 
 
 def save_state_dict(state_dict: dict, filepath: Path):
@@ -33,4 +36,6 @@ def load_state_dict(filepath: Path) -> dict:
     -------
     The loaded state dictionary.
     """
-    return torch.load(filepath)
+    with safe_globals():
+        state_dict = torch.load(filepath)
+    return state_dict

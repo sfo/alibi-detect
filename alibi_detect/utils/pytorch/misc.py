@@ -1,7 +1,10 @@
+import contextlib
 import logging
 from typing import Type
 from alibi_detect.utils._types import TorchDeviceType
+from packaging import version
 
+import numpy as np
 import torch
 
 logger = logging.getLogger(__name__)
@@ -114,3 +117,28 @@ def get_optimizer(name: str = 'Adam') -> Type[torch.optim.Optimizer]:
         raise NotImplementedError(f"Optimizer {name} not implemented.")
 
     return optimizer
+
+
+# Source of the following function:
+# https://github.com/huggingface/transformers/blob/58e13b9f129bb0dccc3b51e5da22f45ef3ff0ae7/src/transformers/trainer.py#L276C1-L292C55
+def safe_globals():
+    # Starting from version 2.4 PyTorch introduces a check for the objects loaded
+    # with torch.load(weights_only=True). Starting from 2.6 weights_only=True becomes
+    # a default and requires allowlisting of objects being loaded.
+    # See: https://github.com/pytorch/pytorch/pull/137602
+    # See: https://pytorch.org/docs/stable/notes/serialization.html#torch.serialization.add_safe_globals
+    # See: https://github.com/huggingface/accelerate/pull/3036
+    if version.parse(torch.__version__).release < version.parse("2.6").release:
+        return contextlib.nullcontext()
+
+    np_core = np._core if version.parse(np.__version__) >= version.parse("2.0.0") else np.core
+    allowlist = [np_core.multiarray._reconstruct, np.ndarray, np.dtype]
+    # numpy >1.25 defines numpy.dtypes.UInt32DType, but below works for
+    # all versions of numpy
+    allowlist += [type(np.dtype(np.uint32))]
+
+    # tests complain about float64DType, so we add it as well
+    allowlist += [type(np.dtype(np.float64))]
+
+    return torch.serialization.safe_globals(allowlist)
+

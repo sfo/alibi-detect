@@ -99,7 +99,7 @@ def test_pca_linear_torch_backend_ts(tmp_path):
     assert torch.all(pred_1 == pred_2)
 
     pca_torch.save(tmp_path / 'pca_torch.pt')
-    pca_torch = torch.load(tmp_path / 'pca_torch.pt')
+    pca_torch = torch.load(tmp_path / 'pca_torch.pt', weights_only=False)
     pred_2 = pca_torch(x)
     assert torch.all(pred_1 == pred_2)
 
@@ -119,6 +119,6 @@ def test_pca_kernel_torch_backend_ts(tmp_path):
     assert torch.all(pred_1 == pred_2)
 
     pca_torch.save(tmp_path / 'pca_torch.pt')
-    pca_torch = torch.load(tmp_path / 'pca_torch.pt')
+    pca_torch = torch.load(tmp_path / 'pca_torch.pt', weights_only=False)
     pred_2 = pca_torch(x)
     assert torch.all(pred_1 == pred_2)

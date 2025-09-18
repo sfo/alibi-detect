@@ -115,7 +115,7 @@ def test_gmm_torchscript(tmp_path):
     assert torch.all(y == torch.tensor([False, True]))
 
     ts_gmm.save(tmp_path / 'gmm.pt')
-    ts_gmm = torch.load(tmp_path / 'gmm.pt')
+    ts_gmm = torch.load(tmp_path / 'gmm.pt', weights_only=False)
     y = ts_gmm(x)
     assert torch.all(y == torch.tensor([False, True]))
 

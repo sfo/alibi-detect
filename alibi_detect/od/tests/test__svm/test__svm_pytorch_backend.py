@@ -65,7 +65,7 @@ def test_svm_torch_backend_ts(tmp_path, backend_cls):
     assert torch.all(pred_1 == pred_2)
 
     svm_torch.save(tmp_path / 'svm_torch.pt')
-    svm_torch = torch.load(tmp_path / 'svm_torch.pt')
+    svm_torch = torch.load(tmp_path / 'svm_torch.pt', weights_only=False)
     pred_2 = svm_torch(x)
     assert torch.all(pred_1 == pred_2)
 

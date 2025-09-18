@@ -26,7 +26,7 @@ dependencies = [
     "tensorflow>=2.16.0,<2.20.0",
     "tf-keras>=2.16.0,<2.20.0",
     "pykeops>=2.0.0,<2.3.0",
-    "torch>=1.7.0,<2.6.0"
+    "torch>=1.7.0,<3.0.0"
 ]
 
 [dependency-groups]

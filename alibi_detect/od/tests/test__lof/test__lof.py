@@ -235,7 +235,7 @@ def test_lof_ensemble_integration(tmp_path, aggregator, normalizer):
     assert torch.all(y == torch.tensor([False, True]))
 
     ts_lof.save(tmp_path / 'lof.pt')
-    lof_detector = torch.load(tmp_path / 'lof.pt')
+    lof_detector = torch.load(tmp_path / 'lof.pt', weights_only=False)
     y = lof_detector(x)
     assert torch.all(y == torch.tensor([False, True]))
 
@@ -266,6 +266,6 @@ def test_lof_integration(tmp_path):
     assert torch.all(y == torch.tensor([False, True]))
 
     ts_lof.save(tmp_path / 'lof.pt')
-    lof_detector = torch.load(tmp_path / 'lof.pt')
+    lof_detector = torch.load(tmp_path / 'lof.pt', weights_only=False)
     y = lof_detector(x)
     assert torch.all(y == torch.tensor([False, True]))

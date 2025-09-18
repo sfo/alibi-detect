@@ -71,7 +71,7 @@ def test_lof_torch_backend_ensemble_ts(tmp_path, ensembler):
     assert torch.all(pred_1 == pred_2)
 
     lof_torch.save(tmp_path / 'lof_torch.pt')
-    lof_torch = torch.load(tmp_path / 'lof_torch.pt')
+    lof_torch = torch.load(tmp_path / 'lof_torch.pt', weights_only=False)
     pred_2 = lof_torch(x)
     assert torch.all(pred_1 == pred_2)
 
@@ -93,7 +93,7 @@ def test_lof_torch_backend_ts(tmp_path):
     assert torch.all(pred_1 == pred_2)
 
     lof_torch.save(tmp_path / 'lof_torch.pt')
-    lof_torch = torch.load(tmp_path / 'lof_torch.pt')
+    lof_torch = torch.load(tmp_path / 'lof_torch.pt', weights_only=False)
     pred_2 = lof_torch(x)
     assert torch.all(pred_1 == pred_2)
 
