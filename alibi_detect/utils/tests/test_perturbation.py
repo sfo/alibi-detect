@@ -72,7 +72,7 @@ def test_inject_outlier_ts(inject_outlier_ts_params):
     if perc_outlier > 0:
         assert (idx_diff == idx_outlier).all()
     else:
-        assert not idx_diff and not idx_outlier
+        assert idx_diff.size == 0 and idx_outlier.size == 0
 
 
 rate = [0., .1, .2]

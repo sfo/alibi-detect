@@ -50,9 +50,9 @@ torch = [
     "torch>=1.7.0, <3.0.0",
 ]
 tensorflow = [
-    "tensorflow>=2.16.0, <2.20.0",
+    "tensorflow>=2.16.0, <2.21.0",
     "tensorflow_probability>=0.8.0, <0.26.0",
-    "tf-keras>=2.16.0, <2.20.0",
+    "tf-keras>=2.16.0, <2.21.0",
 ]
 keops = [
     "pykeops>=2.0.0, <2.3.0",
@@ -61,9 +61,9 @@ keops = [
 all = [
     "prophet>=1.1.0, <2.0.0",
     "pykeops>=2.0.0, <2.3.0",
-    "tensorflow>=2.16.0, <2.20.0",
+    "tensorflow>=2.16.0, <2.21.0",
     "tensorflow_probability>=0.8.0, <0.26.0",
-    "tf-keras>=2.16.0, <2.20.0",
+    "tf-keras>=2.16.0, <2.21.0",
     "torch>=1.7.0, <3.0.0",
 ]
 
@@ -73,6 +73,7 @@ build-backend = "pdm.backend"
 
 [dependency-groups]
 dev = [
+    "alibi-detect[all]",
     "alibi-testing",
     "ipykernel>=5.1.0,<7.0.0",
     "ipywidgets>=7.6.5,<9.0.0",
@@ -113,3 +114,4 @@ doc = [
 
 [tool.uv.sources]
 alibi-testing = { git = "https://github.com/SeldonIO/alibi-testing", rev = "master" }
+alibi-detect = { workspace = true }
